@@ -47,8 +47,7 @@ def add_document(request):
         if form.is_valid():
 
             data = form.cleaned_data
-            doc = Document.objects.create()
-            doc.user = request.user
+            doc = Document.objects.create(user = request.user)
             doc.title = data['title']
             doc.text = data['text']
             doc.submit()
