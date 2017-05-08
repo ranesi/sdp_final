@@ -7,6 +7,7 @@ from django.utils import timezone
 # import datetime
 from . import eq
 from .calc import analyze_string
+from .topics import get_topics
 
 User._meta.get_field('email')._blank = False  # TODO email validator
 
@@ -27,6 +28,7 @@ class Profile(models.Model):
 class Document(models.Model):
     title = models.CharField(max_length=200)
     date_submitted = models.DateTimeField(blank=True, null=True)
+    topics = models.CharField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     sentences = models.IntegerField(blank=True, null=True)
     words = models.IntegerField(blank=True, null=True)
@@ -45,7 +47,7 @@ class Document(models.Model):
         """
         self.date_submitted = timezone.now() # django utils
         # self.date_submitted = datetime.datetime.now()
-
+        self.topics = get_topics(self.text)
         self.sentences, self.words, self.syllables, \
             self.characters, self.poly_syllables = analyze_string(
                 self.text)
