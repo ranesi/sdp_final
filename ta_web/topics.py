@@ -19,7 +19,7 @@ def get_topics(text):
     while len(ret) <= 3:
         ret.append('')
 
-    return ret
+    return ', '.join(ret)
 
 
 def get_key():
