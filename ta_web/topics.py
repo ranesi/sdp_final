@@ -10,9 +10,13 @@ def get_topics(text):
 
     try:
         resp = data.analyze(text)
+        x = 0
         for topic in resp.topics():
             if topic.score >= 0.5:
                 ret.append(topic.label)
+            if x == 2:
+                break
+            x += 1
     except textrazor.HTTPError:
         pass
 
