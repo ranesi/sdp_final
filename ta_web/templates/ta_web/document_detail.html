@@ -1,0 +1,25 @@
+{% extends 'ta_web/base.html' %}
+{% block content %}
+  <div class="document" style="margin:30px;color:#000;background-color:#f8f8f8;border:3px solid #444; border-radius:5px; padding: 30px">
+    {% if document.date_submitted %}
+      <div class="date">
+        {{ document.date_submitted }}
+      </div>
+    {% endif %}
+    <h3>{{ document.title }}</h3>
+    <pre>
+        Sentences.......{{ document.sentences }}
+        Words...........{{ document.words }}
+        Syllables.......{{ document.syllables }}
+        <!---Polysyllables...{{ document.polysyllables }}--->
+      </pre>
+  <h3>Indices</h3>
+      <pre>
+        Readability.....{{ document.readability_index }}
+        Grade Level.....{{ document.fk_grade_level }}
+        ARI.............{{ document.ari }}
+    </pre>
+      <a href="{% url 'ta_web:show_entries' %}"><h3>Back</h3></a>
+  <hr>
+  </div>
+{% endblock %}

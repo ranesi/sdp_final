@@ -1,0 +1,16 @@
+{% extends 'ta_web/base.html' %}
+
+{% block content %}
+<div class="col-sm-12">
+{% for doc in documents %}
+
+<div class="documents" style="margin: 30px;color: #000; background-color: #f8f8f8; border: 3px solid #444; border-radius: 5px; padding: 30px">
+    <h3><a href="{% url 'ta_web:entry_detail' pk=doc.pk %}">{{ doc.title }}</a></h3>
+    <div class="date"><p>{{ doc.date_submitted }}</p></div>
+    </div>
+    {% empty %}
+    <p>No documents yet submitted!</p>
+
+{% endfor %}
+    </div>
+{% endblock %}

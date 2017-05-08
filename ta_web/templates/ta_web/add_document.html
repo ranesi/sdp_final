@@ -1,0 +1,13 @@
+{% extends 'ta_web/base.html' %}
+{% block content %}
+<div class="col-sm-12">
+    <h3>Add a Document</h3><hr>
+    <form method="post" action="">{% csrf_token %}
+        <table id="add_document_form">
+            {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

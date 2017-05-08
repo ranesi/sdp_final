@@ -1,0 +1,12 @@
+{% extends 'ta_web/base.html' %}{% block content %}
+
+<div class='col-sm-12'>
+  <h3>Registration</h3>
+  <form method="post" action="">{% csrf_token %}
+    <table id="registration_form" class="table">
+      {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+{% endblock %}
