@@ -28,7 +28,7 @@ class Profile(models.Model):
 class Document(models.Model):
     title = models.CharField(max_length=200)
     date_submitted = models.DateTimeField(blank=True, null=True)
-    topics = models.CharField(blank=True, null=True)
+    topics = models.CharField(max_length=255, blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     sentences = models.IntegerField(blank=True, null=True)
     words = models.IntegerField(blank=True, null=True)
