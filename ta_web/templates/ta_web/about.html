@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+    <div class="col-sm-12">
+        <h2>About</h2>
+        <hr>
+        <p>
+            Text analysis web app. Provides the user with an estimated grade
+            level for a piece of text. English only. Currently ignores words
+            not found in the dictionary ('cmudict' from the nltk corpus).<br><br>
+            Planned additions: unknown word handling, additional formulae (Gunning fog, SMOG, Fry readability, Coleman-Liau).<br><br>
+            If you have any questions, please <a href="mailto:ranesi@acm.org">email</a> me.
+            <a href='https://github.com/pallets/flask/tree/master/examples/flaskr' target='_blank'>
+              found here.</a><br><br>
+            This web app utilizes the following:<br>
+            -Django<br>
+            -PostgreSQL<br>
+            -NLTK (Natural Language Toolkit)<br>
+            -gunicorn<br>
+            -the Textrazor API<br>
+        </p>
+        <hr>
+        <h3>Flesch Reading Ease & Flesch-Kincaid Grade Level Scales</h3>
+        <p>
+            The following scales were developed in the 1970s by Rudolf Flesch and J. Peter Kincaid to evaluate Army / Navy technical manuals.<br><br>
+            <b>FRE:</b><br>
+            <img src=https://wikimedia.org/api/rest_v1/media/math/render/svg/bd4916e193d2f96fa3b74ee258aaa6fe242e110e
+            alt='Flesch Reading Ease'><br>
+            <b>FK-GL:</b><br>
+            <img src=https://wikimedia.org/api/rest_v1/media/math/render/svg/8e68f5fc959d052d1123b85758065afecc4150c3
+            alt='Flesch-Kincaid Grade Level'><br>
+        </p>
+        <hr>
+        <!--
+        <h2>SMOG</h2>
+        <p>
+            The SMOG grade was designed by G. Harry McLaughlin to approximately indicate the required years of education needed to comprehend a piece of text. Its original purpose was to address perceived shortcomings with the FK-GL, and is most commonly utilized by the medical industry (pamphlets, etc.).<br>
+            <img src=https://wikimedia.org/api/rest_v1/media/math/render/svg/da193073ce4254e54b077fbf56e418b14b50b9cd alt='SMOG' height='200', width='500'><br>
+        </p>
+        <hr>
+        -->
+        <h3>Automated Readability Index</h3>
+        <p>
+            Quoth Wikipedia:<br><br>
+            "The automated readability index (ARI) is a readability test for English texts, designed to gauge the understandability of a text. Like the Flesch–Kincaid grade level, Gunning fog index, SMOG index, Fry readability formula, and Coleman–Liau index, it produces an approximate representation of the US grade level needed to comprehend the text."
+            <img src='https://wikimedia.org/api/rest_v1/media/math/render/svg/878d1640d23781351133cad73bdf27bdf8bfe2fd'
+            alt='Automated Readability Index'><br>
+        </p>
+    </div>
+  </div>
+{% endblock %}

@@ -102,3 +102,7 @@ def register(request):
 def logout_message(request):
 
     return render(request, 'ta_web/logout_message.html')
+
+def about(request):
+
+    return render(request, 'ta_web/about.html')

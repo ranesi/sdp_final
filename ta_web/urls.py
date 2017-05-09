@@ -41,4 +41,10 @@ urlpatterns = [
         name='logout_message'
     ),
 
+    url(
+        r'&about/$',
+        views.about,
+        name='about'
+    ),
+
 ]
