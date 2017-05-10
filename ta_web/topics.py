@@ -3,7 +3,7 @@ import textrazor
 
 def get_topics(text):
 
-    textrazor.api_key = '5eca1d0b51d33cb0b68a07e05ffa32bc76beecb012f67719f2036518'
+    textrazor.api_key = get_key()
 
     ret = []
     data = textrazor.TextRazor(extractors=['topics'])
