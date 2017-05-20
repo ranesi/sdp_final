@@ -1,8 +1,16 @@
 import textrazor
+import re
+
+
+def regex_whitespace(key):
+    filter = '[a-zA-Z0-9]'
+    rep = ''
+    re.compile(filter)
+    return re.sub(rep, key)
 
 
 def get_topics(text):
-
+    # TODO: see if this can be replaced by functionality from the NLTK library
     textrazor.api_key = get_key()
 
     ret = []
@@ -20,14 +28,10 @@ def get_topics(text):
     except textrazor.HTTPError:
         pass
 
-    while len(ret) <= 3:
-        ret.append('')
-
     return ', '.join(ret)
 
 
 def get_key():
     with open('key.txt', 'r') as f:
         temp = f.read()
-        temp = temp.replace('\n', '')
-    return temp
+    return regex_whitespace(temp)

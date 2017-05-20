@@ -52,18 +52,17 @@ def analyze_string(text):
 
 
 def get_syllables(word):
-    '''
+    """
         Break word into phonemes, syllables (by trailing digit,
         the count of which yields the number of syllables)
-    '''
-    #http://stackoverflow.com/a/4103234
-    #
+    """
+    # http://stackoverflow.com/a/4103234
     try:
         temp_list = [list(y for y in x if y[-1].isdigit()) for x in dictionary[word]]
         value = len(temp_list[0])
         return value
     except KeyError:
-        #probably unnecessary
+        # cmudict is accessed by key
         return 0
 
 
