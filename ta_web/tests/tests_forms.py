@@ -6,13 +6,11 @@ from django.db import IntegrityError
 
 import re
 
-from .models import Document
-from .forms import AddDocumentForm, CreateUserForm
-
+from text_analysis.ta_web.models import Document
+from text_analysis.ta_web.forms import AddDocumentForm, CreateUserForm
 
 
 class AddDocumentFormTest(TestCase):
-
     def setUp(self):
         User.objects.create(
             username='asd',
@@ -20,7 +18,6 @@ class AddDocumentFormTest(TestCase):
         )
 
     def test_no_title(self):
-
         user = User.objects.get(username='asd')
 
         form_data = dict(
@@ -33,7 +30,6 @@ class AddDocumentFormTest(TestCase):
         self.assertFalse(test_form.is_valid())
 
     def test_no_body(self):
-
         user = User.objects.get(username='asd')
 
         form_data = dict(
@@ -43,6 +39,67 @@ class AddDocumentFormTest(TestCase):
 
         test_form = AddDocumentForm(form_data)
 
+        self.assertFalse(test_form.is_valid())
+
+
+class CreateUserFormTest(TestCase):
+    def setUp(self):
+        user1_info = dict(
+            username='a',
+            email='b@b.gov',
+            password1='zxcvzxcv',
+            password2='zxcvzxcv'
+        )
+        user2_info = dict(
+            username='b',
+            email='c@c.biz',
+            password1='qwerqwer',
+            password2='qwerqwer'
+        )
+        user1 = User(user1_info)
+        user2 = User(user2_info)
+
+        user1.save()
+        user2.save()
+
+    def valid_user_creation_form(self):
+        test_data = dict(
+            username='JimmyDean',
+            email='breakfast@sausage.com',
+            password1='egg$andwiches',
+            password2='egg$andwiches'
+        )
+        test_form = CreateUserForm(test_data)
+        self.assertTrue(test_form.is_valid())
+
+    def password_too_short(self):
+        test_data = dict(
+            username='Bisquik',
+            email='waffle@pancake.com',
+            password1='asdfasd',
+            password2='asdfasd'
+        )
+        test_form = CreateUserForm(test_data)
+        self.assertFalse(test_form.is_valid())
+
+    def username_already_exists(self):
+        test_data = dict(
+            username='a',
+            email='waffle@pancake.com',
+            password1='zxcvzxcv',
+            password2='zxcvzxcv'
+        )
+        test_form = CreateUserForm(test_data)
+        self.assertFalse(test_form.is_valid())
+
+    def username_case_insensitive(self):
+        test_data = dict(
+            username='A',
+            email='waffle@pancake.biz',
+            password1='zxcvzxcv',
+            password2='zxcvzxcv'
+        )
+        test_form = CreateUserForm(test_data)
         self.assertFalse(test_form.is_valid())
 
 
