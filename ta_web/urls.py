@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from . import views, user_views, document_views
+from . import views, views_users, views_documents
 
 urlpatterns = [
 
@@ -13,19 +13,19 @@ urlpatterns = [
 
     url(
         r'^document/all$',
-        document_views.show_documents,
+        views_documents.show_documents,
         name='show_entries'
     ),
 
     url(
         r'^document/(?P<pk>\d+)$',
-        document_views.document_detail,
+        views_documents.document_detail,
         name='entry_detail'
     ),
 
     url(
         r'^document/add/$',
-        document_views.add_document,
+        views_documents.add_document,
         name='add_document'
     ),
 
@@ -33,13 +33,13 @@ urlpatterns = [
 
     url(
         r'^register/$',
-        user_views.register,
+        views_users.register,
         name='register'
     ),
 
     url(
         r'^logout_message/$',
-        user_views.logout_message,
+        views_users.logout_message,
         name='logout_message'
     ),
 

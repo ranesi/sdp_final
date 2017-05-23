@@ -13,10 +13,10 @@ def regex_whitespace(key):
 def get_topics(text):
     """
     TextRazor API call to get topics.
-    
+
     This is dependent on access to a TextRazor API key, the free version of which
     is severely limited in regards to daily request numbers.
-    
+
     The API key itself must be stored in a file called 'key.txt', which should be
     placed into text_analysis/ta_web/
     """
@@ -49,7 +49,7 @@ def get_topics(text):
 
 
 def get_key():
-    """Get key from file (returns cleaned string 
+    """Get key from file (returns cleaned string
     - will not work for special characters! (unless you modify the regex)"""
     with open('key.txt', 'r') as f:
         temp = f.read()

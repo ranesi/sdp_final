@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from ta_web import views
+from ta_web import views, views_users
 
 urlpatterns = [
     url(
@@ -45,7 +45,7 @@ urlpatterns = [
     #register
     url(
         r'^register/$',
-        views.register,
+        views_users.register,
         name='register'
     ),
 
