@@ -10,7 +10,7 @@ def regex_whitespace(key):
     return re.sub(rep, key)
 
 
-def get_topics(text):
+def textrazor_topics(text):
     """
     TextRazor API call to get topics.
 

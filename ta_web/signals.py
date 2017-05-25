@@ -1,22 +1,20 @@
-from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import Profile
+from django.contrib.auth.models import User
+from .models import Document, DocumentAnalysis
+
 import django.core.exceptions
 
-# It should be noted that this information (user account extension)
-# was gleaned from <simpleisbetterthancomplex.com>
-
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+@receiver(post_save, sender=Document)
+def create_document_analysis(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        da = DocumentAnalysis.objects.create(document=instance, user=instance.user)
+        da.set_indices()
+        da.save()
 
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
+@receiver(post_save, sender=Document)
+def save_document(sender, instance, **kwargs):
     try:
-        instance.profile.save()
+        instance.analysis.save()
     except django.core.exceptions.ObjectDoesNotExist:
         pass
